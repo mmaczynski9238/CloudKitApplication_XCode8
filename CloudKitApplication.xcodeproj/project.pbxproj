@@ -11,6 +11,8 @@
 		37B37C721DA45D0C00B69076 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37B37C701DA45D0C00B69076 /* Main.storyboard */; };
 		37B37C741DA45D0C00B69076 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B37C731DA45D0C00B69076 /* Assets.xcassets */; };
 		37B37C771DA45D0C00B69076 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37B37C751DA45D0C00B69076 /* LaunchScreen.storyboard */; };
+		DBF117551DA48BCD0071F6F8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF117541DA48BCD0071F6F8 /* TableViewController.swift */; };
+		DBF117581DA48D250071F6F8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF117571DA48D250071F6F8 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,9 @@
 		37B37C731DA45D0C00B69076 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37B37C761DA45D0C00B69076 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37B37C781DA45D0C00B69076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBF117541DA48BCD0071F6F8 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../TableViewController.swift; sourceTree = "<group>"; };
+		DBF117561DA48D200071F6F8 /* CloudKitApplication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CloudKitApplication.entitlements; sourceTree = "<group>"; };
+		DBF117571DA48D250071F6F8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBF117581DA48D250071F6F8 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +42,7 @@
 		37B37C601DA45D0C00B69076 = {
 			isa = PBXGroup;
 			children = (
+				DBF117571DA48D250071F6F8 /* CloudKit.framework */,
 				37B37C6B1DA45D0C00B69076 /* CloudKitApplication */,
 				37B37C6A1DA45D0C00B69076 /* Products */,
 			);
@@ -52,8 +59,10 @@
 		37B37C6B1DA45D0C00B69076 /* CloudKitApplication */ = {
 			isa = PBXGroup;
 			children = (
-				37B37C6C1DA45D0C00B69076 /* AppDelegate.swift */,
+				DBF117561DA48D200071F6F8 /* CloudKitApplication.entitlements */,
+				DBF117541DA48BCD0071F6F8 /* TableViewController.swift */,
 				37B37C701DA45D0C00B69076 /* Main.storyboard */,
+				37B37C6C1DA45D0C00B69076 /* AppDelegate.swift */,
 				37B37C731DA45D0C00B69076 /* Assets.xcassets */,
 				37B37C751DA45D0C00B69076 /* LaunchScreen.storyboard */,
 				37B37C781DA45D0C00B69076 /* Info.plist */,
@@ -93,6 +102,12 @@
 				TargetAttributes = {
 					37B37C681DA45D0C00B69076 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = BWYT76Q3DS;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -133,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37B37C6D1DA45D0C00B69076 /* AppDelegate.swift in Sources */,
+				DBF117551DA48BCD0071F6F8 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,11 +263,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CloudKitApplication/CloudKitApplication.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CloudKitApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.619238jhhs.CloudKitApplication;
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.619238.CloudKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -261,11 +278,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CloudKitApplication/CloudKitApplication.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CloudKitApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.619238jhhs.CloudKitApplication;
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.619238.CloudKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -290,6 +308,7 @@
 				37B37C7D1DA45D0C00B69076 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
