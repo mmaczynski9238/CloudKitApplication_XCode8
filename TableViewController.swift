@@ -20,6 +20,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet var tableView: UITableView!
     
+    
     var names = [CKRecord]()
     var refresh:UIRefreshControl!
     
@@ -28,7 +29,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         
         refresh = UIRefreshControl()
-        refresh.attributedTitle = NSAttributedString(string: "Pull to load names")
+        refresh.attributedTitle = NSAttributedString(string: "Pull To Refresh")
         refresh.addTarget(self, action: #selector(TableViewController.loadData), forControlEvents: .ValueChanged)
         tableView.addSubview(refresh)
         
@@ -59,9 +60,9 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBAction func sendName(sender: AnyObject) {
         
-        let alert = UIAlertController(title: "New Name", message: "Enter a name", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Enter a Name", message: nil, preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler { (textField:UITextField) -> Void in
-            textField.placeholder = "Your Name"
+            textField.placeholder = "Enter A Name"
         }
         
         alert.addAction(UIAlertAction(title: "Send", style: .Default, handler: { (action:UIAlertAction) -> Void in
@@ -80,6 +81,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
                             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
                             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Top)
                             self.tableView.endUpdates()
+                            print("Name Saved Successfully")
                         })
                     }else{
                         print(error)
@@ -117,12 +119,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         let Name = names[indexPath.row]
         
         if let NameContent = Name["content"] as? String {
-            let dateFormat = NSDateFormatter()
-            dateFormat.dateFormat = "MM/dd/yyyy"
-            let dateString = dateFormat.stringFromDate(Name.creationDate!)
+            let schoolString = "JHHS"
+//            let dateFormat = NSDateFormatter()
+//            dateFormat.dateFormat = "MM/dd/yyyy"
+//            let dateString = dateFormat.stringFromDate(Name.creationDate!)
             
             cell.textLabel?.text = NameContent
-            cell.detailTextLabel?.text = dateString
+            cell.detailTextLabel?.text = schoolString
         }
         
         return cell
