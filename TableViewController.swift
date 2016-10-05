@@ -6,12 +6,6 @@
 //  Copyright © 2016 Michael Maczynski. All rights reserved.
 //
 //
-//  TableViewController.swift
-//  CloudKitApplication
-//
-//  Created by Michael Maczynski on 10/4/16.
-//  Copyright © 2016 Michael Maczynski. All rights reserved.
-//
 
 import UIKit
 import CloudKit
