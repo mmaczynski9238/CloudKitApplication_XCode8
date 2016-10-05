@@ -267,6 +267,7 @@
 				CODE_SIGN_ENTITLEMENTS = CloudKitApplication/CloudKitApplication.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = BWYT76Q3DS;
 				INFOPLIST_FILE = CloudKitApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.619238.CloudKit;
@@ -283,6 +284,7 @@
 				CODE_SIGN_ENTITLEMENTS = CloudKitApplication/CloudKitApplication.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = BWYT76Q3DS;
 				INFOPLIST_FILE = CloudKitApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.619238.CloudKit;

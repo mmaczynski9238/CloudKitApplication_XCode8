@@ -17,7 +17,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var names = [CKRecord]()
     var refresh:UIRefreshControl!
-    
+    let publicData = CKContainer.defaultContainer().publicCloudDatabase
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,8 +67,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
                 let newName = CKRecord(recordType: "Name")
                 newName["content"] = textField.text
                 
-                let publicData = CKContainer.defaultContainer().publicCloudDatabase
-                publicData.saveRecord(newName, completionHandler: { (record:CKRecord?, error:NSError?) -> Void in
+                self.publicData.saveRecord(newName, completionHandler: { (record:CKRecord?, error:NSError?) -> Void in
                     if error == nil {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.tableView.beginUpdates()
@@ -102,6 +102,19 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return names.count
     }
     
+       //http://stackoverflow.com/questions/36844342/how-to-delete-a-ckrecord-at-indexpath-uitableview
+        
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == .Delete {
+//            let record = names[indexPath.row]
+//            publicData.deleteRecordWithID(record.recordID, completionHandler: ({returnRecord, error in
+//                // do error handling
+//            })
+//                names.removeAtIndex(indexPath.row)
+//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//        }
+//    }
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
