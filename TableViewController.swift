@@ -16,6 +16,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     var names = [CKRecord]()
+    var images = [CKAsset]()
+
     var refresh:UIRefreshControl!
     let publicData = CKContainer.defaultContainer().publicCloudDatabase
 
@@ -34,11 +36,15 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func loadData () {
         names = [CKRecord]()
+        images = [CKAsset]()
         
-        let publicData = CKContainer.defaultContainer().publicCloudDatabase
-        let query = CKQuery(recordType: "Name", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
+        
+        let query = CKQuery(recordType: "CurrentUser", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        
+        
         publicData.performQuery(query, inZoneWithID: nil) { (results:[CKRecord]?, error:NSError?) -> Void in
+            
             if let names = results {
                 self.names = names
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -88,7 +94,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        //self.presentViewController(alert, animated: true, completion: nil)
         
     }
     
@@ -125,12 +131,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let Name = names[indexPath.row]
         
-        if let NameContent = Name["content"] as? String {
+        if let NameContent = Name["namecontent"] as? String {
             let schoolString = "JHHS"
 //            let dateFormat = NSDateFormatter()
 //            dateFormat.dateFormat = "MM/dd/yyyy"
 //            let dateString = dateFormat.stringFromDate(Name.creationDate!)
-            
+            cell.imageView!.image = UIImage(named: "chicago")
+
             cell.textLabel?.text = NameContent
             cell.detailTextLabel?.text = schoolString
         }

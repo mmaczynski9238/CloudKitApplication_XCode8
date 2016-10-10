@@ -8,16 +8,17 @@
 
 
 import Foundation
+import UIKit
 
 class Students
     
 {
     var name: String
     var school: String
-    var image: String
+    var image: UIImage
     
     
-    init(Name n:String,School s:String,image i: String)
+    init(Name n:String,School s:String,image i: UIImage)
     {
         name = n
         school = s
@@ -29,6 +30,6 @@ class Students
     {
         name = ""
         school = ""
-        image = ""
+        image = UIImage()
     }
 }
